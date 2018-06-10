@@ -80,6 +80,14 @@ namespace MonoBehaviour
 				_currentStrip = strip.gameObject;
 			}
 		}
+
+		public void MH_StartRain(Dictionary<String, Object> args)
+		{
+			Transform rain = transform.Find("Rain");
+			rain.gameObject.SetActive(true);
+			rain.GetComponent<Animator>().SetTrigger("start_rain");
+		}
+	
 	}
 
 	public enum Layout

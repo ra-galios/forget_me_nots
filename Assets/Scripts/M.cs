@@ -26,6 +26,12 @@ public class M
         mesage.AddArg("stripName", stripName);
         return mesage;
     }
+    
+    public static M startRain()
+    {
+        M mesage = new M("StartRain");
+        return mesage;
+    }
 
     public void Call(GameObject gameObject)
     {

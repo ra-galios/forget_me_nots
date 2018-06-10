@@ -160,7 +160,8 @@
             "Ikea. Open storage system.",
             "I remember how I ordered it. Every time I buy something from Ikea I think of Fight club. 'The things you used to own, now they own you'",
             "I’m not sure I can really relate myself to this stuff.",
-            "That’s a nice furniture though. I feel like people who spend hours in search of something NOT THAT MAINSTREAM are more… owned by their stuff, than those who just buy the first nice one on the first referral link in Google. But well, who am I to judge.",
+            "That’s a nice furniture though. I feel like people who spend hours in search of something NOT THAT MAINSTREAM are more… owned by their stuff, than those who just buy the first nice one on the first referral link in Google.",
+            "But well, who am I to judge.",
             "And yeah, umbrella is not here."
         }, e28);
         
@@ -168,14 +169,14 @@
         
         D s3 = D.Sequence(new[]
         {
-            "Its’ middle of December, I should wear a coat… Probably. Or I’ll get sick.I don’t want it, right? I’m supposed not to want this.",
             "Wait… What’s that?",
             "It’s raining? In the middle of December? I mean, sure, the weather got crazy since it’s Global Warming about to destroy our ecosystem, but still, rain in the middle of December in my hallway is kinda… weird.",
             "Oh well.",
             "Anyway. I think, I should look for a umbrella."
         }, e20);
-        
-        D e13 = D.Say("I go to the hallway.", s3, M.showSlot("Slot2"));
+
+        D e13dot5 = D.Say("Its’ middle of December, I should wear a coat… Probably. Or I’ll get sick.I don’t want it, right? I’m supposed not to want this.", s3, M.startRain());
+        D e13 = D.Say("I go to the hallway.", e13dot5, M.showSlot("Slot2"));
         D e12 = D.Say("I have to go. I put on my dirty smelly jeans. Those could really use a laundry, but who cares? Not me, that’s for sure.", e13);
         D e11 = D.Say("I kill the alarm. Then I understand, it didn’t actually go off.", e12);
         D e10 = D.Say("I try to reach a half-empty glass with muddy water, but just when I about to grab it, my butterfingers knock it over. My blanket and even sheet get wet. Nice start! Whatever.", e12);
