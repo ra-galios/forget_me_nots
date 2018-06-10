@@ -79,8 +79,8 @@
             "Why? Well. First of all, for what? Really. And hey, I don’t feel my legs anymore anyway. So even if I for some reason…",
             "Okay, I want get up."
         }, e29);
-        
-        D e28dot5 = D.Say("I lie down to the bed…", s6dot5, M.showSlot("Slot5"))
+
+        D e28dot5 = D.Say("I lie down to the bed…", s6dot5, M.showSlot("Slot5"));
         
         D s6 = D.Sequence(new[]
         {
