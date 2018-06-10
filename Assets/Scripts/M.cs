@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = System.Object;
 
-public class FMNMethodMessage
+public class M
 {
     private String _name;
     private Dictionary<String, Object> _args = new Dictionary<string, object>();
 
-    public FMNMethodMessage(String name, Dictionary<String, Object> args)
+    public M(String name)
     {
         _name = "MH_" + name;
-        foreach (var item in args)
-        {
-            _args.Add(item.Key, item.Value);
-        }
+    }
+
+    public static M showSlot(String slotName)
+    {
+        M message = new M("ShowSlot");
+        message.AddArg("slotName", slotName);
+        return message;
     }
 
     public void Call(GameObject gameObject)
