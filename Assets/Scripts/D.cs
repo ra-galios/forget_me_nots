@@ -5,34 +5,68 @@ using UnityEngine;
 using UnityEngine.Events;
 using Object = System.Object;
 
-public abstract class FMNDialogueEntry
+public abstract class D
 {
-    private FMNDialogueEntry()
+    private D()
     {
-        
+
     }
 
-    public static FMNDialogueEntry Make(FMNDialogueEntry next, String content, FMNMethodMessage onFinish)
+    public static D Say(String phrase)
     {
-        return new SimpleMessage(next, content, onFinish);
+        return new SimpleMessage(null, phrase, null);
     }
 
-    public static FMNDialogueEntry Make(String firstChoice, FMNMethodMessage onFirstChoice, String secondChoice,
-        FMNMethodMessage onSecondChoice)
+    public static D Say(String phrase, D next)
+    {
+        return new SimpleMessage(next, phrase, null);
+    }
+
+    public static D Say(String phrase, M onFinish)
+    {
+        return new SimpleMessage(null, phrase, onFinish);
+    }
+
+    public static D Say(String phrase, D next, M onFinish)
+    {
+        return new SimpleMessage(next, phrase, onFinish);
+    }
+
+    public static D Sequence(String[] repliques, D finaly)
+    {
+        D next = finaly;
+        for (int i = repliques.Length - 1; i >= 0; i--)
+        {
+            String phrase = repliques[i];
+            D dialog = Say(phrase, next);
+            next = dialog;
+        }
+
+        return next;
+    }
+   
+
+    public static D Choose(String firstChoice, D firstNext, String secondChoice, D secondNext)
+    {
+        return new Choice(firstChoice, firstNext, null, secondChoice, secondNext, null);
+    }
+
+public static D Make(String firstChoice, M onFirstChoice, String secondChoice,
+        M onSecondChoice)
     {
         return new Choice(firstChoice, null, onFirstChoice, secondChoice, null, onSecondChoice);
     }
 
     public abstract void InitScene(GameObject sceneContainer);
     
-    private class SimpleMessage : FMNDialogueEntry
+    private class SimpleMessage : D
     {
         private String _content;
-        private FMNMethodMessage _onFinish;
+        private M _onFinish;
         private GameObject _sceneContainer;
-        private FMNDialogueEntry _next;
+        private D _next;
 
-        public SimpleMessage(FMNDialogueEntry next, String content, FMNMethodMessage onFinish)
+        public SimpleMessage(D next, String content, M onFinish)
         {
             _next = next;
             _content = content;
@@ -59,20 +93,20 @@ public abstract class FMNDialogueEntry
         }
     }
     
-    private class Choice : FMNDialogueEntry
+    private class Choice : D
     {
         private GameObject _sceneContainer;
 
-        private FMNDialogueEntry _nextFirst;
+        private D _nextFirst;
         private String _firstChoice;
-        private FMNMethodMessage _onFirstChoice;
+        private M _onFirstChoice;
         
-        private FMNDialogueEntry _nextSecond;
+        private D _nextSecond;
         private String _secondChoice;
-        private FMNMethodMessage _onSecondChoice;
+        private M _onSecondChoice;
         
-        public Choice(String firstChoice, FMNDialogueEntry nextFirst, FMNMethodMessage onFirstChoice, String secondCHoice,
-            FMNDialogueEntry nextSecond, FMNMethodMessage onSecondChoice)
+        public Choice(String firstChoice, D nextFirst, M onFirstChoice, String secondCHoice,
+            D nextSecond, M onSecondChoice)
         {
             _firstChoice = firstChoice;
             _nextFirst = nextFirst;
