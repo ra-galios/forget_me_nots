@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using Object = System.Object;
 
 namespace MonoBehaviour
 {
@@ -28,7 +25,7 @@ namespace MonoBehaviour
 		}
 
 		// ReSharper disable once UnusedMember.Global
-		public void MH_Show(Dictionary<String, Object> args)
+		public void Show()
 		{
 			_colorTransformer.Show();
 		}

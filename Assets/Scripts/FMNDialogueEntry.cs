@@ -12,15 +12,15 @@ public abstract class FMNDialogueEntry
         
     }
 
-    public static FMNDialogueEntry Make(String content, FMNMethodMessage onFinish)
+    public static FMNDialogueEntry Make(FMNDialogueEntry next, String content, FMNMethodMessage onFinish)
     {
-        return new SimpleMessage(content, onFinish);
+        return new SimpleMessage(next, content, onFinish);
     }
 
     public static FMNDialogueEntry Make(String firstChoice, FMNMethodMessage onFirstChoice, String secondChoice,
         FMNMethodMessage onSecondChoice)
     {
-        return new Choice(firstChoice, onFirstChoice, secondChoice, onSecondChoice);
+        return new Choice(firstChoice, null, onFirstChoice, secondChoice, null, onSecondChoice);
     }
 
     public abstract void InitScene(GameObject sceneContainer);
@@ -30,9 +30,11 @@ public abstract class FMNDialogueEntry
         private String _content;
         private FMNMethodMessage _onFinish;
         private GameObject _sceneContainer;
+        private FMNDialogueEntry _next;
 
-        public SimpleMessage(String content, FMNMethodMessage onFinish)
+        public SimpleMessage(FMNDialogueEntry next, String content, FMNMethodMessage onFinish)
         {
+            _next = next;
             _content = content;
             _onFinish = onFinish;
         }
@@ -51,25 +53,32 @@ public abstract class FMNDialogueEntry
         {
             if(_onFinish != null)
                 _onFinish.Call(_sceneContainer);
+            
+            if(_next != null)
+                _next.InitScene(_sceneContainer);
         }
     }
     
     private class Choice : FMNDialogueEntry
     {
         private GameObject _sceneContainer;
-        
+
+        private FMNDialogueEntry _nextFirst;
         private String _firstChoice;
         private FMNMethodMessage _onFirstChoice;
         
+        private FMNDialogueEntry _nextSecond;
         private String _secondChoice;
         private FMNMethodMessage _onSecondChoice;
         
-        public Choice(String firstChoice, FMNMethodMessage onFirstChoice, String secondCHoice,
-            FMNMethodMessage onSecondChoice)
+        public Choice(String firstChoice, FMNDialogueEntry nextFirst, FMNMethodMessage onFirstChoice, String secondCHoice,
+            FMNDialogueEntry nextSecond, FMNMethodMessage onSecondChoice)
         {
             _firstChoice = firstChoice;
+            _nextFirst = nextFirst;
             _onFirstChoice = onFirstChoice;
             _secondChoice = secondCHoice;
+            _nextSecond = nextSecond;
             _onSecondChoice = onSecondChoice;
         }
         
@@ -77,7 +86,7 @@ public abstract class FMNDialogueEntry
         {
             _sceneContainer = sceneContainer;
             Dictionary<String, Object> args = new Dictionary<string, object>();
-            args.Add("layout", Layout.Speach);
+            args.Add("layout", Layout.Choice);
             args.Add("bChoice1", _firstChoice);
             args.Add("onFirstChoice", (UnityAction) OnFirstChoice);
             args.Add("bChoice2", _secondChoice);
@@ -89,12 +98,19 @@ public abstract class FMNDialogueEntry
         {
             if(_onFirstChoice != null)
                 _onFirstChoice.Call(_sceneContainer);
+            
+            if(_nextFirst != null)
+                _nextFirst.InitScene(_sceneContainer);
+                
         }
 
         public void OnSecondChoice()
         {
             if(_onSecondChoice != null)
                 _onSecondChoice.Call(_sceneContainer);
+            
+            if(_nextSecond != null)
+                _nextSecond.InitScene(_sceneContainer);
         }
     }
 }
