@@ -2,7 +2,53 @@
 {
     public static D DialogueEntry()
     {
-        D e43 = D.Say("Test");
+        D e50 = D.Say("And that’s a lie.");
+        D e49 = D.Say("“That’s right, come here! Give it to me! Don’t worry, I’ll stay in the darkness, where I belong. For a while” - the monster says.");
+        D e48 = D.Choose("Feed the monster", e49, "Let it starve to death", e50);
+
+        D e47dot5 = D.Say("The locker doesn’t look so reliable.  Maybe I don’t want to feed him?", e48, M.showSlot("Slot5"));
+        D s15 = D.Sequence(new[]
+        {
+            "“Try this”, says Docefago and passes me a fresh bone with the rests flesh on it. - “but don’t get too close”.",
+            "From personal supplies, I guess?",
+            "“You think you’re funny?” - sniffs Docefago. ",
+            "Meanwhile the monster inside of cell seem to be interested in this bone. ",
+            "“Give it to me!” - he orders. - “Now!”",
+            "I put the treat into the bowl. The bowl is clearly too far away for monster to reach it. But somehow I don’t feel enough courage to push in towards the bars.",
+        }, e47dot5);
+        
+        D e47 = D.Say("Chains and also the bars look completely new, like somebody just have put it here. Who? Hah...", s15, M.showSlot("Slot4"));
+        
+        D e46 = D.Choose("Look at the chains", e47, null, "Look at the floor", s15, M.showSlot("Slot4"));
+        D s14 = D.Sequence(new[]
+        {
+            "Okay, maybe… maybe he is just hungry, huh?.. Sorry, I must be looked scared. That’s because I am panicking. Honestly, have you seen this monster? And he thinks, he is a God?",
+            "I look around in search of anything that might help me to survive."
+
+        }, e46);
+        D e45 = D.Say("“AND I KEEP ON LIVING ONLY BECAUSE EVERY NEXT MORNING IS A POSSIBILITY TO BREAK OUT”", s14,
+            M.showSlot("Slot3"));
+        D s13 = D.Sequence(new[]
+        {
+            "Okay. This is unpleasant. Can’t say I’m a big fan of giant… what is it? Hyena-lyon?.. Ugh.",
+            "And the teeth…",
+            "“I see you! Come closer! Or what are you, scared?”",
+            "“You tiny piece of coward shit",
+            "Nice. Passive-agressive mutant monster. And how did I come to this?",
+            "Anyway, I make a step backwards. ",
+            "“Were are going?! I recognize you!”",
+            "“You are the one who created me! Tell me then, oh, Creator!”",
+            "“When you look at me do you see lion?”",
+            "“Don’t answer. I know, what you are thinking… You think I’m ugly. You are scared of me. You disguised by me”",
+            "“But you know what? I AM A GOD AND I WANT TO BE TREATED LIKE GOD”"
+        }, e45);
+        D e44 = D.Say("“Who’s there?” - I hear low gnarling.", s13, M.showSlot("Slot2"));
+        D s12 = D.Sequence(new[]
+        {
+            "Ah come on! Chains? Honestly? What is it, house of old dominatrix?",
+            "“You do understand, that all of this is creation of YOUR brain?” - quietly says Docefago."
+        }, e44);
+        D e43 = D.Say("I wonder whom am I going to meet here? Dead babies? Worn out kittens?", s12, M.showSlot("Slot1"));
         D e42 = D.Choose("Extreme right door", e43, M.showStrip("Strip_2"), "Extreme left door", e43, M.showStrip("Strip_2"));
         D s11 = D.Sequence(new[]
         {
