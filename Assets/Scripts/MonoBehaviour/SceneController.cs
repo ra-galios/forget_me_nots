@@ -11,12 +11,13 @@ namespace MonoBehaviour
 	{
 		public GameObject ChoiceLayout;
 		public GameObject SpeachLayout;
-		public GameObject Strip;
-
+		
+		private GameObject _currentStrip;
 		private Layout _current = Layout.UDEF;
 
 	    void Start()
 	    {
+		    ShowStrip("Strip_1");
 		    Dialog.DialogueEntry().InitScene(gameObject);
 	    }
 
@@ -53,7 +54,7 @@ namespace MonoBehaviour
 		
 		public void MH_ShowSlot(Dictionary<String, Object> args)
 		{
-			Transform slot = Strip.transform.Find((string) args["slotName"]);
+			Transform slot = _currentStrip.transform.Find((string) args["slotName"]);
 			if (slot)
 			{
 				GameObject slotGO = slot.gameObject;
@@ -63,21 +64,20 @@ namespace MonoBehaviour
 		
 		public void MH_ShowStrip(Dictionary<String, Object> args)
 		{
-			Transform slot = Strip.transform.Find((string) args["slotName"]);
-			if (slot)
-			{
-				GameObject slotGO = slot.gameObject;
-				slotGO.SendMessage("Show");
-			}
+			String stripName = (string) args["stripName"];
+			ShowStrip(stripName);
 		}
-		
-		public void MH_Door(Dictionary<String, Object> args)
+
+		private void ShowStrip(String stripName)
 		{
-			Transform slot = Strip.transform.Find((string) args["slotName"]);
-			if (slot)
+			Transform strip = transform.Find(stripName);
+			if (strip != null)
 			{
-				GameObject slotGO = slot.gameObject;
-				slotGO.SendMessage("Show");
+				if(_currentStrip != null)
+					_currentStrip.SetActive(false);
+				
+				strip.gameObject.SetActive(true);
+				_currentStrip = strip.gameObject;
 			}
 		}
 	}
