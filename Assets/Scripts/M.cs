@@ -32,6 +32,12 @@ public class M
         M mesage = new M("StartRain");
         return mesage;
     }
+    
+    public static M startMusic()
+    {
+        M mesage = new M("StartMusic");
+        return mesage;
+    }
 
     public void Call(GameObject gameObject)
     {

@@ -87,6 +87,11 @@ namespace MonoBehaviour
 			rain.gameObject.SetActive(true);
 			rain.GetComponent<Animator>().SetTrigger("start_rain");
 		}
+		
+		public void MH_StartMusic(Dictionary<String, Object> args)
+		{
+			GetComponent<AudioSource>().Play();
+		}
 	
 	}
 

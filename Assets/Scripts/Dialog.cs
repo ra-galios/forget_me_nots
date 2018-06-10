@@ -191,13 +191,14 @@
         
         D e5 = D.Say("This story began one lightless morning.", s2, M.showSlot("Slot1"));
 
+        D e4dot5 = D.Say("Little piano, would you help me, please?", e5, M.startMusic());
+        
         D s1 = D.Sequence(new[]
         {
             "Welcome, ladies and gentlemen! Glad to see you here on my One-man show!",
             "Now, if you would be so kind as to make yourself comfortable…",
-            "We can start.",
-            "Little piano, would you help me, please?"
-        }, e5);
+            "We can start."
+        }, e4dot5);
         return s1;
     }
 }
