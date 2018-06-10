@@ -2,7 +2,8 @@
 {
     public static D DialogueEntry()
     {
-        D e42 = D.Say("...");
+        D e43 = D.Say("Test");
+        D e42 = D.Choose("Extreme right door", e43, M.showStrip("Strip_2"), "Extreme left door", e43, M.showStrip("Strip_2"));
         D s11 = D.Sequence(new[]
         {
             "“And, my oh my, what a beautiful creatures you had settled there!”",

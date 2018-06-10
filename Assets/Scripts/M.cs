@@ -20,6 +20,13 @@ public class M
         return message;
     }
 
+    public static M showStrip(String stripName)
+    {
+        M mesage = new M("ShowStrip");
+        mesage.AddArg("stripName", stripName);
+        return mesage;
+    }
+
     public void Call(GameObject gameObject)
     {
         gameObject.SendMessage(_name, _args);

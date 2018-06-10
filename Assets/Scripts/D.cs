@@ -50,11 +50,10 @@ public abstract class D
     {
         return new Choice(firstChoice, firstNext, null, secondChoice, secondNext, null);
     }
-
-public static D Make(String firstChoice, M onFirstChoice, String secondChoice,
-        M onSecondChoice)
+    
+    public static D Choose(String firstChoice, D firstNext, M onFirst, String secondChoice, D secondNext, M onSecond)
     {
-        return new Choice(firstChoice, null, onFirstChoice, secondChoice, null, onSecondChoice);
+        return new Choice(firstChoice, firstNext, onFirst, secondChoice, secondNext, onSecond);
     }
 
     public abstract void InitScene(GameObject sceneContainer);
