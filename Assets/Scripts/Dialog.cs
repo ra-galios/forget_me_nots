@@ -112,7 +112,7 @@
             "“I see, things turn sour. Right, right…”"
         }, e34);
        
-        D e33 = D.Say("For example… Who the hell is sitting near my bed?!", s7, M.showSlot("Slot4"));
+        D e33 = D.Say("For example… Who the hell is sitting near my bed?!", s7, M.showSlot("Slot5"));
         D e32 = D.Say("We have more important things to discuss.", e33);
 
         D e31 = D.Say("You stupid! I can’t, fershtein? No signal goes to my legs.", e32);
@@ -127,7 +127,7 @@
             "Okay, I want get up."
         }, e29);
 
-        D e28dot5 = D.Say("I lie down to the bed…", s6dot5, M.showSlot("Slot5"));
+        D e28dot5 = D.Say("I lie down to the bed…", s6dot5, M.showSlot("Slot4"));
         
         D s6 = D.Sequence(new[]
         {
