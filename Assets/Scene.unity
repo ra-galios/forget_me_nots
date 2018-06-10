@@ -1659,7 +1659,6 @@ GameObject:
   - component: {fileID: 1793263060}
   - component: {fileID: 1793263062}
   - component: {fileID: 1793263061}
-  - component: {fileID: 1793263063}
   m_Layer: 5
   m_Name: Strip
   m_TagString: Untagged
@@ -1725,17 +1724,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793263059}
---- !u!114 &1793263063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1793263059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1cd867404e4143678895a99df2d8ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1814095682 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224286370353952226, guid: 183ae53e2740d4cb48064c08d97dd25e,
@@ -1754,7 +1742,7 @@ GameObject:
   - component: {fileID: 2009174575}
   - component: {fileID: 2009174578}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: StripScene
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1849,9 +1837,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b6c80ca7525a4d838d2713a5c0fb3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Strip: {fileID: 0}
   ChoiceLayout: {fileID: 713121317}
   SpeachLayout: {fileID: 73920369}
+  Strip: {fileID: 1793263059}
 --- !u!1 &2014170615
 GameObject:
   m_ObjectHideFlags: 0

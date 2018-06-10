@@ -13,13 +13,10 @@ namespace MonoBehaviour
 		public GameObject SpeachLayout;
 		public GameObject Strip;
 
-		private Transform _transform;
 		private Layout _current = Layout.UDEF;
 
 	    void Start()
 	    {
-		    _transform = GetComponent<Transform>();
-		    
 		    Dictionary<String, Object> args1 = new Dictionary<string, object>();
 		    args1.Add("slotName", "Slot2");
 		    
