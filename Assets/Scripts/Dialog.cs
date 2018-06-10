@@ -3,7 +3,7 @@
     public static D DialogueEntry()
     {
         D e50 = D.Say("And that’s a lie.");
-        D e49 = D.Say("“That’s right, come here! Give it to me! Don’t worry, I’ll stay in the darkness, where I belong. For a while” - the monster says.");
+        D e49 = D.Say("“That’s right, come here! Give it to me! Don’t worry, I’ll stay in the darkness, where I belong. For a while” - the monster says.", e50);
         D e48 = D.Choose("Feed the monster", e49, "Let it starve to death", e50);
 
         D e47dot5 = D.Say("The locker doesn’t look so reliable.  Maybe I don’t want to feed him?", e48, M.showSlot("Slot5"));
